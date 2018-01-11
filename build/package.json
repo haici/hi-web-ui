@@ -1,0 +1,13 @@
+{
+  "name": "hi-web-ui",
+  "version": "0.0.1-bate.15",
+  "main": "lib/index.js",
+  "repository": {},
+  "author": "Yang",
+  "license": "MIT",
+  "dependencies": {
+    "draft-js": "^0.10.4",
+    "rc-upload": "^2.4.3",
+    "classnames": "^2.2.5"
+  }
+}

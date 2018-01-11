@@ -1,0 +1,43 @@
+{
+  "name": "hi-web-ui",
+  "version": "1.0.0",
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "start": "bisheng start",
+    "site": "NODE_ENV=production bisheng build --ssr",
+    "build": "npm run build-ui && npm run publish",
+    "build-ui": "rimraf ./build/lib && babel ./components/ --out-dir ./build/lib --ignore *.md --copy-files",
+    "publish": "cd ./build && smnp"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-generator": "6.11.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "bisheng": "^0.28.0",
+    "bisheng-plugin-description": "^0.1.4",
+    "bisheng-plugin-react": "^0.6.3",
+    "classnames": "2.2.5",
+    "draft-js": "^0.10.4",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "github-markdown-css": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-less": "^3.3.2",
+    "gulp-postcss": "^7.0.0",
+    "postcss-pxtorem": "^4.0.1",
+    "rc-upload": "^2.4.4",
+    "react-document-title": "^2.0.3",
+    "rimraf": "^2.6.2",
+    "smnp": "^1.0.3"
+  }
+}
