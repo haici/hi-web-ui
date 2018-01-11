@@ -9,9 +9,22 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  &.hi-modal-root-show {
+    .modal-back {
+      transition: all .4s cubic-bezier(0.215, 0.61, 0.355, 1);
+      opacity: .7;
+    }
+    .modal-box {
+      transition: all .4s cubic-bezier(0.215, 0.61, 0.355, 1) .05s;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
   .modal-box {
     display: block;
+    position: relative;
+    margin-top: 10%;
     z-index: 1050;
     min-height: 200px;
     min-width: 400px;
@@ -20,51 +33,75 @@
     display: flex;
     flex-direction: column;
     font-size: 14px;
-    .modal-title {
-      display: flex;
-      justify-content: space-between;
-      padding: 16px 24px;
-      .modal-title-close {
-        transform: scale(.7);
-        cursor: pointer;
+    transition: all .4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(-40px) translateZ(0);
+    // transform-origin: top;
+    opacity: .05;
+    .modal-box-container {
+      &.modal-box-container-loading {
+        filter: blur(2px);
       }
-    }
-    .modal-content {
-      border-top: 1px solid @c-border;
-      border-bottom: 1px solid @c-border;
-      flex: auto;
-      padding: 24px;
-    }
-    .modal-bottom {
-      display: flex;
-      justify-content: flex-end;
-      padding: 10px 16px;
-      .btn {
-        line-height: 1.5;
-        display: inline-block;
-        font-weight: 400;
-        text-align: center;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        cursor: pointer;
-        background-image: none;
-        border: 1px solid transparent;
-        white-space: nowrap;
-        padding: 0 15px;
-        font-size: 14px;
-        border-radius: 4px;
-        height: 32px;
-        user-select: none;
-        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-        position: relative;
-        color: rgba(0, 0, 0, 0.65);
-        background-color: #fff;
-        border-color: #d9d9d9;
-        margin-right: 15px;
-        &:last-child {
-          margin-right: 0;
+      .modal-title {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 24px;
+        .modal-title-close {
+          transform: scale(.7);
+          cursor: pointer;
         }
       }
+      .modal-content {
+        border-top: 1px solid @c-border;
+        border-bottom: 1px solid @c-border;
+        flex: auto;
+        padding: 24px;
+      }
+      .modal-bottom {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 16px;
+        .btn {
+          line-height: 1.5;
+          display: inline-block;
+          font-weight: 400;
+          text-align: center;
+          -ms-touch-action: manipulation;
+          touch-action: manipulation;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          white-space: nowrap;
+          padding: 0 15px;
+          font-size: 14px;
+          border-radius: 4px;
+          height: 32px;
+          user-select: none;
+          transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+          position: relative;
+          color: rgba(0, 0, 0, 0.65);
+          background-color: #fff;
+          border-color: #d9d9d9;
+          margin-right: 15px;
+          &:last-child {
+            margin-right: 0;
+          }
+          &:hover {
+            background-color: rgba(191, 191, 191, 0.315);
+          }
+        }
+      }
+    }
+    .modal-loading {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1051;
+      background-color: rgba(0, 0, 0, 0.103);
     }
   }
   .modal-back {
@@ -74,13 +111,10 @@
     left: 0;
     right: 0;
     background-color: #000;
-    transition: all 1s ease .5s;
-    opacity: .1;
+    transition: all .4s ease-out;
+    transform: translateZ(0);
+    opacity: 0;
     z-index: 1049;
   }
-  &.hi-modal-root-show {
-    .modal-back {
-      opacity: .7;
-    }
-  }
+
 }
