@@ -19,6 +19,7 @@ class Demo extends React.Component {
         <Modal
           {...{
             hasShow,
+            onCancel: () => this.setState({ hasShow: false })
           }}
         />
         <button

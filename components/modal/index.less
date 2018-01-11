@@ -74,7 +74,13 @@
     left: 0;
     right: 0;
     background-color: #000;
-    opacity: .5;
+    transition: all 1s ease .5s;
+    opacity: .1;
     z-index: 1049;
+  }
+  &.hi-modal-root-show {
+    .modal-back {
+      opacity: .7;
+    }
   }
 }
