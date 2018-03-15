@@ -27,6 +27,7 @@ class Demo extends React.Component {
             hasLoading,
             onCancel: () => this.setState({ visible: false }),
             onSubmit: () => this.setState({ hasLoading: !hasLoading }),
+            title: '提醒',
             cancelText: '取消',
             submitText: '确定',
           }}

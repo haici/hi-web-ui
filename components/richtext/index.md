@@ -46,7 +46,8 @@ ReactDOM.render(
   <div style={{ width: '400px' }}>
     <RichText
       defaultValue={text}
-      readOnly={true}
+      readOnly={false}
+      onChange={value => console.log(JSON.stringify(value))}
       onClickImage={(url, arr) => console.log(url, arr)}
     />
   </div>, mountNode);

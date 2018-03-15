@@ -63,7 +63,14 @@ class Draft extends Component {
           .map(item => defaultValue.entityMap[item])
           .map(({ data }) => data.src)
         const editorState = EditorState.createWithContent(convertFromRaw(defaultValue))
-        this.setState({ editorState, imgList: newImgList })
+        /*
+          修复第一次默认数据没有正常正常onChange到上层bug
+          屏蔽了原来这里直接添加进去 转而使用localOnchange 来更新默认数据到本地并更新到上层
+          如果默认数据这里存在什么问题，可以尝试考虑次处逻辑
+        */
+        // this.setState({ editorState, imgList: newImgList })
+        this.setState({ imgList: newImgList })
+        this.localOnChange(editorState)
       } catch (e) {
         this.localOpenModal('默认值格式错误')
       }

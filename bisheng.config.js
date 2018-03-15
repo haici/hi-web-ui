@@ -1,5 +1,5 @@
 module.exports = {
-  port: 8008,
+  port: 8007,
   source: {
     components: './components',
     docs: './docs',

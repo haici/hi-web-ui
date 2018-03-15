@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { equals } from 'ramda'
 import ReactDOM from 'react-dom'
 import cn from 'classnames'
 import './index.less'
@@ -22,7 +23,8 @@ class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return nextState.localShowBase !== this.state.localShowBase ||
       nextState.localShowContent !== this.state.localShowContent ||
-      nextProps.hasLoading !== this.props.hasLoading
+      nextProps.hasLoading !== this.props.hasLoading ||
+      !equals(nextProps.children, this.props.children)
   }
   componentWillUnmount() {
     document.body.removeChild(this.modalContainer)
@@ -43,14 +45,21 @@ class Modal extends Component {
       }
     }
   }
+  localOnSubmit = (e) => {
+    e.preventDefault()
+    const { onSubmit } = this.props
+    if (typeof onSubmit === 'function') {
+      onSubmit()
+    }
+  };
   render() {
     const {
       onCancel,
-      onSubmit,
       children,
       hasLoading,
-      cancelText = 'Cancel',
-      submitText = 'Submit',
+      title = '',
+      cancelText = '取消',
+      submitText = '确定',
     } = this.props
     const {
       localShowBase,
@@ -76,7 +85,7 @@ class Modal extends Component {
             )}
           >
             <div className="modal-title">
-              <span>标题</span>
+              <span>{title}</span>
               <span
                 className="modal-title-close"
                 onClick={onCancel}
@@ -90,6 +99,7 @@ class Modal extends Component {
             </div>
             <div className="modal-bottom">
               <button
+                type="button"
                 className="btn btn-cancel"
                 onClick={onCancel}
                 aria-hidden
@@ -97,8 +107,9 @@ class Modal extends Component {
                 {cancelText}
               </button>
               <button
+                type="button"
                 className="btn btn-submit"
-                onClick={onSubmit}
+                onClick={this.localOnSubmit}
               >
                 {submitText}
               </button>

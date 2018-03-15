@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  z-index: 1050;
   &.hi-modal-root-show {
     .modal-back {
       transition: all .4s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -32,7 +33,7 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    font-size: 14px;
+    // font-size: 14px;
     transition: all .4s cubic-bezier(0.215, 0.61, 0.355, 1);
     transform: translateY(-40px) translateZ(0);
     // transform-origin: top;
@@ -45,6 +46,7 @@
         display: flex;
         justify-content: space-between;
         padding: 16px 24px;
+        font-size: 14px;
         .modal-title-close {
           transform: scale(.7);
           cursor: pointer;
@@ -60,6 +62,7 @@
         display: flex;
         justify-content: flex-end;
         padding: 10px 16px;
+        font-size: 14px;
         .btn {
           line-height: 1.5;
           display: inline-block;
@@ -72,7 +75,7 @@
           border: 1px solid transparent;
           white-space: nowrap;
           padding: 0 15px;
-          font-size: 14px;
+          // font-size: 14px;
           border-radius: 4px;
           height: 32px;
           user-select: none;
